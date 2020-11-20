@@ -23,16 +23,17 @@
 
 ## Itemsテーブル
 
-| column          | type    | option      |
-| --------------- | ------- | ----------- |
-| name            | string  | null: false |
-| introduction    | text    | null: false |
-| price           | integer | null: false |
-| status_id       | integer | null: false |
-| category_id     | integer | null: false |
-| burden_id       | integer | null: false |
-| prefecture_id   | integer | null: false |
-| shipping_day_id | integer | null: false |
+| column          | type      | option            |
+| --------------- | --------- | ----------------- |
+| name            | string    | null: false       |
+| introduction    | text      | null: false       |
+| price           | integer   | null: false       |
+| status_id       | integer   | null: false       |
+| category_id     | integer   | null: false       |
+| burden_id       | integer   | null: false       |
+| prefecture_id   | integer   | null: false       |
+| shipping_day_id | integer   | null: false       |
+| user            | reference | foreign_key: true |
 
 
 ### Association
@@ -51,7 +52,7 @@
 | city          | string     | null: false       |
 | number        | string     | null: false       |
 | phone         | string     | null: false       |
-| purchases     | references | foreign_key: true |
+| purchase      | references | foreign_key: true |
 | build         | string     | -                 |
 
 ### Association
@@ -64,7 +65,6 @@
 | ------- | ---------- | ----------------- |
 | user    | references | foreign_key: true |
 | item    | references | foreign_key: true |
-| comment | text       | -                 |
 
 ### Association
 
