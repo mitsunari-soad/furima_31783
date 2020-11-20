@@ -4,18 +4,19 @@
 
 ## Usersテーブル
 
-| column             | type       | option                   |
-| ------------------ | ---------- | ------------------------ |
-| nickname           | string     | null: false              |
-| email              | string     | null: false              |
-| encrypted_password | string     | null: false,unique: true |
-| first_name         | string     | null: false              |
-| last_name          | string     | null: false              |
-| birth              | integer    | null: false              |
+| column             | type   | option                   |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| email              | string | null: false              |
+| encrypted_password | string | null: false,unique: true |
+| first_name         | string | null: false              |
+| last_name          | string | null: false              |
+| yomigana           | string | null:false               |
+| birth              | Date   | null: false              |
 
 ### Association
 
-- has_many :item
+- has_many :items
 - has_many :purchases
 
 
@@ -31,8 +32,6 @@
 | burden_id          | integer    | null: false       |
 | shipping_source_id | integer    | null: false       |
 | shipping_day_id    | integer    | null: false       |
-| shipping           | references | foreign_key: true |
-| purchase_item      | references | foreign_key: true |
 
 
 ### Association
@@ -46,12 +45,13 @@
 
 | column        | type       | option            |
 | ------------- | ---------- | ----------------- |
-| postal        | integer    | null: false       |
+| postal        | string     | null: false       |
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
-| number        | integer    | null: false       |
-| phone         | integer    | null: false       |
-| purchases_id  | references | foreign_key: true |
+| number        | string     | null: false       |
+| phone         | string     | null: false       |
+| purchases     | references | foreign_key: true |
+| build         | string     | -                 |
 
 ### Association
 
@@ -59,14 +59,14 @@
 
 ## Purchasesテーブル
 
-| column  | type      | option            |
-| ------- | --------- | ----------------- |
-| user_id | reference | foreign_key: true |
-| item_id | reference | foreign_key: true |
-| comment | text      | -                 |
+| column  | type       | option            |
+| ------- | ---------- | ----------------- |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
+| comment | text       | -                 |
 
 ### Association
 
-- has_one    :shippings
+- has_one    :shipping
 - belongs_to :user
 - belongs_to :item
