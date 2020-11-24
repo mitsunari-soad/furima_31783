@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  
   has_one_attached :image
   has_one :purchase
   belongs_to :user
@@ -7,12 +6,12 @@ class Item < ApplicationRecord
     validates :name
     validates :introduction
     validates :image
-    validates :price,format: { with: /\A[0-9]+\z/, message: '半角数字のみ' },numericality: {greater_than_or_equal_to: 300,less_than:9999999}
+    validates :price, format: { with: /\A[0-9]+\z/, message: '半角数字のみ' }, numericality: { greater_than_or_equal_to: 300, less_than: 9_999_999 }
   end
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :status,:category,:burden,:prefecture,:shipping_day
-  
+  belongs_to :status, :category, :burden, :prefecture, :shipping_day
+
   validates :prefecture_id, numericality: { other_than: 48 }
   with_options numericality: { other_than: 1 } do
     validates :status_id

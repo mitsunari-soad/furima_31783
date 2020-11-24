@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      
+
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
 
@@ -53,13 +53,13 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password 半角英数混合(半角英語のみ)')
     end
-    
+
     it '全角では登録できないこと' do
       @user.password = '１１１１１１１'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password 半角英数混合(半角英語のみ)')
     end
-    
+
     it 'パスワードとパスワード（確認用）、値の一致が必須であること' do
       @user.password = 'aaa111'
       @user.password_confirmation = 'aaa112'
