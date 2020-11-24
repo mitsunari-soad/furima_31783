@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
     it '価格の範囲が、¥300~¥9,999,999の間であること' do
       @item.price = 10_000_000
       @item.valid?
-      expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+      expect(@item.errors.full_messages).to include('Price must be less than 10000000')
     end
 
     it '販売価格は半角数字のみ保存可能であること' do
@@ -78,12 +78,29 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price 半角数字のみ')
     end
-  
+
     it 'idが１（--）の場合は保存できない' do
       @item.status_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status must be other than 1")
+      expect(@item.errors.full_messages).to include('Status must be other than 1')
     end
-  
+
+    it 'idが１（--）の場合は保存できない' do
+      @item.burden_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Burden must be other than 1')
+    end
+
+    it 'idが１（--）の場合は保存できない' do
+      @item.shipping_day_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
+    end
+
+    it 'idが１（--）の場合は保存できない' do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
+    end
   end
 end
