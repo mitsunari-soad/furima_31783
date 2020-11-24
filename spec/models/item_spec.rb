@@ -79,31 +79,31 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Price 半角数字のみ')
     end
 
-    it 'idが１（--）の場合は保存できない' do
+    it '商品状態のidが１（--）の場合は保存できない' do
       @item.status_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Status must be other than 1')
     end
 
-    it 'idが１（--）の場合は保存できない' do
+    it '送料のidが１（--）の場合は保存できない' do
       @item.burden_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Burden must be other than 1')
     end
 
-    it 'idが１（--）の場合は保存できない' do
+    it '配送日数のidが１（--）の場合は保存できない' do
       @item.shipping_day_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
     end
 
-    it 'idが１（--）の場合は保存できない' do
+    it 'カテゴリーのidが１（--）の場合は保存できない' do
       @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
 
-    it 'idが１（--）の場合は保存できない' do
+    it '発送元のidが１（--）の場合は保存できない' do
       @item.prefecture_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
