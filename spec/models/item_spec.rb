@@ -78,5 +78,12 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price 半角数字のみ')
     end
+  
+    it 'idが１（--）の場合は保存できない' do
+      @item.status_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status must be other than 1")
+    end
+  
   end
 end
