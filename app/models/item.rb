@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     validates :name
     validates :introduction
     validates :image
-    validates :price,format: { with: /\A[0-9]+\z/, message: '半角数字のみ' }
+    validates :price,format: { with: /\A[0-9]+\z/, message: '半角数字のみ' },numericality: {greater_than_or_equal_to: 300,less_than:9999999}
   end
   
   extend ActiveHash::Associations::ActiveRecordExtensions
