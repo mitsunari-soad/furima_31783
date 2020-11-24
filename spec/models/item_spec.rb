@@ -102,5 +102,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
+
+    it 'idが１（--）の場合は保存できない' do
+      @item.prefecture_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+    end
   end
 end

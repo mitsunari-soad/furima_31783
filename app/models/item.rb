@@ -12,11 +12,12 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :status, :category, :burden, :prefecture, :shipping_day
 
-  validates :prefecture_id, numericality: { other_than: 48 }
+  
   with_options numericality: { other_than: 1 } do
     validates :status_id
     validates :burden_id
     validates :shipping_day_id
     validates :category_id
+    validates :prefecture_id
   end
 end
