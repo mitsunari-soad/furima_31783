@@ -10,9 +10,13 @@ class Item < ApplicationRecord
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :status, :category, :burden, :prefecture, :shipping_day
 
-  
+  belongs_to_active_hash :status
+  belongs_to_active_hash :category
+  belongs_to_active_hash :burden
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping_day
+
   with_options numericality: { other_than: 1 } do
     validates :status_id
     validates :burden_id
