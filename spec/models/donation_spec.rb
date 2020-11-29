@@ -53,5 +53,11 @@ RSpec.describe Donation, type: :model do
       @donation.valid?
       expect(@donation.errors.full_messages).to include("Prefecture can't be blank")
     end   
+    
+    it '都道府県が1の場合は購入できない' do
+      @donation.prefecture_id = 1
+      @donation.valid?
+      expect(@donation.errors.full_messages).to include("Prefecture can't be blank")
+    end
   end
 end  
