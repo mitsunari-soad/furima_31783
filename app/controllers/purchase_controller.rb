@@ -1,10 +1,10 @@
 class PurchaseController < ApplicationController
-  before_action :params_find, only: [:index,:create,:pay_item]
+  before_action :params_find, only: [:index,:create]
   before_action :authenticate_user!
 
   def index
     @donation = Donation.new
-    if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || @item.purchase!=nil
       redirect_to root_path
     end
   end
