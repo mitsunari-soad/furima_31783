@@ -91,7 +91,7 @@ RSpec.describe PurchaseShippingForm, type: :model do
       end
     end
 
-    context '商品購入ができない時' do  
+    context '商品購入ができる時' do  
       it '建物名が空でも購入できる' do
         @purchase.build = nil
         expect(@purchase).to be_valid
