@@ -3,7 +3,7 @@ class PurchaseController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @donation = Donation.new
+    @purchase = PurchaseShippingForm.new
     if current_user.id == @item.user_id || @item.purchase!=nil
       redirect_to root_path
     end
@@ -11,10 +11,10 @@ class PurchaseController < ApplicationController
   
   def create
     
-    @donation = Donation.new(donation_params)
-    if @donation.valid?
+    @purchase = PurchaseShippingForm.new(purchase_params)
+    if @purchase.valid?
       pay_item
-      @donation.save
+      @purchase.save
       redirect_to root_path
     else
       render action: :index
@@ -36,8 +36,8 @@ class PurchaseController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def donation_params
-    params.require(:donation).permit(:postal,:prefecture_id,:city,:number,:phone,:build).merge(item_id:params[:item_id],user_id:current_user.id,token:params[:token])
+  def purchase_params
+    params.require(:purchase_shipping_form).permit(:postal,:prefecture_id,:city,:number,:phone,:build).merge(item_id:params[:item_id],user_id:current_user.id,token:params[:token])
     
   end
 end

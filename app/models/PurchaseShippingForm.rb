@@ -1,4 +1,4 @@
-class Donation
+class PurchaseShippingForm
   include ActiveModel::Model
   attr_accessor :user_id,:item_id,:postal,:prefecture_id,:city,:number,:phone,:build,:token
   with_options presence: true do

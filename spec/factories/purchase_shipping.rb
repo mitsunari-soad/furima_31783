@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :donation do
+  factory :PurchaseShippingForm do
     user_id { 1 }
     item_id { 1 }
     postal {'111-1111'}
